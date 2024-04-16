@@ -20,4 +20,15 @@ class NoteSevice {
       return items;
     });
   }
+
+  void addNoteList(String title, String description) {
+    _database.doc().set({
+      'title': title,
+      'description': description,
+    });
+  }
+
+  Future<void> removeNoteList(String key) async {
+    await _database.doc(key).delete();
+  }
 }
